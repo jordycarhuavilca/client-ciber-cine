@@ -1,0 +1,39 @@
+<h1 class="mb-5">Lista de Funciones</h1>
+
+<div class="text-end">
+  <button class="btn btn-primary" routerLink="/add">Agregar Funcion</button>
+</div>
+
+<div class="container mt-5">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th class="bg-secondary text-white">#</th>
+        <th class="bg-secondary text-white">Fecha</th>
+        <th class="bg-secondary text-white">Nombre de la Película</th>
+        <th class="bg-secondary text-white">Género</th>
+        <th class="bg-secondary text-white">#Sala</th>
+        <th class="bg-secondary text-white">Sala disponible</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (funcion of funciones; track funcion) {
+      <tr>
+        <td>{{ funcion.idFuncion }}</td>
+        <td>{{ funcion.fecha | date : "dd/MM/yyyy hh:mm a" }}</td>
+        <td>{{ funcion.idPeligen.pelicula.nombrePelicula }}</td>
+        <td>{{ funcion.idPeligen.genero.nombreGenero }}</td>
+        <td>{{ funcion.idSala.numeroSala }}</td>
+        <td>{{ funcion.idSala.disponibilidadSala }}</td>
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-info">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
