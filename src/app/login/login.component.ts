@@ -2,7 +2,7 @@ import { Component, inject, output } from '@angular/core';
 import { LoginService } from './login.service';
 
 @Component({
-  selector: 'component-login',
+  selector: 'login-component',
   standalone: true,
   imports: [],
   providers: [LoginService],

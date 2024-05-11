@@ -1,11 +1,12 @@
 <div >
   @if (!isAuthenticated) {
     <div style="width: 100%; height: 100vh;" class="bg-secondary d-flex justify-content-center align-items-center">
-      <component-login (loginTrigger)="showComponent($event)"></component-login>
+      <login-component (loginTrigger)="showComponent($event)"></login-component>
     </div>  
   }
   @if (isAuthenticated) {
-    <app-funciones-list></app-funciones-list>
+    <usuario-component [usuario]="usuarioName" [occupation]="usuarioOcuppation">
+    </usuario-component>
   }
 </div>
 <router-outlet />
