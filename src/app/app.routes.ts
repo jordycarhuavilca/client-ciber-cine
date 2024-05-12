@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { FuncionesListComponent } from './funciones-list/funciones-list.component';
+import { FuncionesListComponent } from './funciones/funciones.component';
 export const routes: Routes = [
   {
     path: 'add',

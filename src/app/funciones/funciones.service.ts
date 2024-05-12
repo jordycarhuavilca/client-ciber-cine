@@ -2,17 +2,39 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CIBER_CINE_URI_API } from '../config/config';
-
+import { Token } from '../helper/token';
+import { funcion } from './interfaces/funcion'
 @Injectable({
   providedIn: 'root',
 })
-export class ProviderService {
+export class FuncionesListService {
   constructor() {}
   private apiUrl = CIBER_CINE_URI_API;
   private http = inject(HttpClient);
+  private headers: HttpHeaders = new HttpHeaders({
+    Authorization: `Bearer ${Token.getToken()}`,
+  });
 
-  list(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/function/find`);
+  list(): Promise<funcion[] | null> {
+
+    const res = new Promise<funcion[] | any>(
+      (resolve, reject) => {
+        this.http
+          .get(`${this.apiUrl}/function/find`, {
+            headers: this.headers,
+          })
+          .subscribe((response) => {
+            if (response.hasOwnProperty('list')) {
+              const list =  (response as any).list as funcion[];
+              if (list.length > 0) return resolve(list);
+            }
+            return reject(response);
+          });
+      }
+    ).catch((err)=>{
+      return null
+    });
+    return res;
   }
 
   get(id: number) {
