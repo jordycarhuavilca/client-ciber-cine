@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { CIBER_CINE_URI_API } from '../config/config';
 import { login } from './interfaces/login';
 import { Observable } from 'rxjs';
+import { Token } from '../helper/token';
 @Injectable({
   providedIn: 'root',
 })
@@ -29,10 +30,7 @@ export class LoginService {
           if (value.hasOwnProperty('token')) {
             const data = value as any;
             if (data?.error) return reject(data);
-            localStorage.setItem(
-              'access_token',
-              data?.token.split('Bearer')[1]
-            );
+            Token.setToken('access_token',data?.token.split('Bearer')[1])
             return resolve(data?.token);
           }
         });
