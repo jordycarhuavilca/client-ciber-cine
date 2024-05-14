@@ -49,11 +49,14 @@ export class FuncionesListService {
     return this.http.post(`${this.apiUrl}/function/add`, funcion, { headers });
   }
 
-  update(funcion: any) {
-    return this.http.get(`${this.apiUrl}/function/update`, funcion);
+  update(funcion: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.patch(`${this.apiUrl}/function/update`, funcion, { headers });
   }
 
-  delete(funcion: any) {
-    return this.http.get(`${this.apiUrl}/function/delete`, funcion);
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/function/delete?id=${id}`);
   }
 }

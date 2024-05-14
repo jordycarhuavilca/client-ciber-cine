@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="card" style="width: 18rem">
+      <h5 class="card-title text-center pt-2">Actualizar Pelicula</h5>
+      <div class="card-body">
+        <div class="py-4">
+          <div>
+            <label class="form-label">IdPeligen</label>
+            <input #idMovieGender type="text" class="form-control" required />
+          </div>        
+          <div>
+            <label class="form-label">IdMovie</label>
+            <input #idMovie type="text" class="form-control" required />
+          </div>
+          <div>
+            <label class="form-label">Nombre</label>
+            <input #name type="text" class="form-control" required />
+          </div>
+          <div>
+            <label class="form-label">Director de la Pelicula</label>
+            <input #movieDirector type="text" class="form-control" required />
+          </div>
+          <div>
+            <label class="form-label">Duracion</label>
+            <input #duration type="text" class="form-control" required />
+          </div>
+          <div>
+            <label class="form-label">Idioma</label>
+            <input #language type="text" class="form-control" required />
+          </div>
+          <div>
+            <label class="form-label">Genero</label>
+            <input #gender type="text" class="form-control" required />
+          </div>
+        </div>
+        <div class="text-center">
+          <a
+            href="#"
+            (click)="
+              processData(
+                idMovieGender.value,
+                idMovie.value,
+                name.value,
+                movieDirector.value,
+                duration.value,
+                language.value,
+                gender.value
+              )
+            "
+            class="btn btn-primary me-2"
+            >Actualizar</a
+          >
+          <a href="#" (click)="goBack()" class="btn btn-secondary">Cancelar</a>
+        </div>
+      </div>
+  
+      @if (isCreated.isOk) {
+      <div class="pt-4">
+        <div class="{{ isCreated.color }}" role="alert">
+          {{ isCreated.message }}
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  

@@ -5,6 +5,10 @@ export const routes: Routes = [
     path: 'add',
     loadComponent: () => FuncionesListComponent,
   },
+  {
+    path: 'update',
+    loadComponent: () => FuncionesListComponent,
+  }
   // {
   //   path: 'add',
   //   loadComponent: () => import('./funcione/funciones-form.component'),
